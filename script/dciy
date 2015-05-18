@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# soft-link tmuxinator yml file
+file=~/.tmuxinator/dciy.yml
+pwd=`pwd`/script
+
+if [ -e $file ]; then
+  rm $file
+fi
+
+echo $pwd
+
+ln -s $pwd/dciy.yml $file
+
+mux dciy
+
+open http://localhost:6161

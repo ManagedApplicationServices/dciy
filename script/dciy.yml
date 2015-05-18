@@ -1,0 +1,15 @@
+# ~/.tmuxinator/dciy.yml
+
+name: dciy
+root: ~/Working/dciy
+
+startup_window: console
+
+windows:
+  - editor: vi
+  - server:
+       layout: main-vertical
+       panes:
+         - redis-server
+         - script/server
+  - console: #do nothing
