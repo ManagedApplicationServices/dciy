@@ -22,4 +22,5 @@ gem 'toml'
 group :development do
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'mina'
 end
