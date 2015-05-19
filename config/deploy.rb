@@ -46,16 +46,8 @@ task :deploy => :environment do
     invoke :'deploy:cleanup'
 
     to :launch do
-      queue "cd #{deploy_to}/#{current_path}; rvm use 2.0.0-p247@ci; bundle exec sidekiq -d -L sidekiq.log -q mailer,5 -q default -e production"
-      queue " cd #{deploy_to}/#{current_path}; rvm use 2.0.0-p247@ci; RAILS_ENV=production nohup bundle exec rails server -p 6161 -d"
+      queue "cd #{deploy_to}/#{current_path}; rvm use 2.0.0-p247@ci; bundle exec sidekiq -d -l sidekiq.log -e production"
+      queue "cd #{deploy_to}/#{current_path}; rvm use 2.0.0-p247@ci; RAILS_ENV=production nohup bundle exec rails server -p 6161 -d"
     end
   end
 end
-
-# For help in making your deploy script, see the Mina documentation:
-#
-#  - http://nadarei.co/mina
-#  - http://nadarei.co/mina/tasks
-#  - http://nadarei.co/mina/settings
-#  - http://nadarei.co/mina/helpers
-
