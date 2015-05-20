@@ -46,7 +46,7 @@ task :deploy => :environment do
     invoke :'deploy:cleanup'
 
     to :launch do
-      queue "cd #{deploy_to}/#{current_path}; rvm use 2.0.0-p247@ci; bundle exec sidekiq -d -l sidekiq.log -e production"
+      queue "cd #{deploy_to}/#{current_path}; rvm use 2.0.0-p247@ci; bundle exec sidekiq -d -l log/sidekiq.log -e production"
       queue "cd #{deploy_to}/#{current_path}; rvm use 2.0.0-p247@ci; RAILS_ENV=production nohup bundle exec rails server -p 6161 -d"
     end
   end
